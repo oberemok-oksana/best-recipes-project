@@ -1,9 +1,27 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import RecipeCard from "../components/RecipeCard.astro";
+
+const allRecipes = await getCollection(
+  "recipes",
+  (data) => data.draft !== true
+);
+
+const shuffledRecipes = [...allRecipes].sort(() => Math.random() - 0.5);
+const shortenedRecipeList = shuffledRecipes.slice(0, 3);
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
-    <h1>Welcome</h1>
+    <ul class="flex gap-3 my-8">
+      {
+        shortenedRecipeList.map((item) => (
+          <li class="mt-32">
+            <RecipeCard recipe={item} />
+          </li>
+        ))
+      }
+    </ul>
   </main>
 </Layout>

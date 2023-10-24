@@ -13,25 +13,16 @@ export const getStaticPaths = async () => {
 };
 
 const recipe = Astro.params;
- const allRecipes = await getCollection(
-    "recipes",
-    (data) => data.draft !== true
-  );
-const chosenRecipe =  allRecipes.find((item)=>{
-  console.log(item.slug)//coconut-chicken
-// deruny
-// pelmeni
-// pyrizhky
-// sweet-sour-chicken
-// tom-yam
- return item.slug === recipe.recipe});
-console.log(chosenRecipe)//{ recipe: 'tom-yam' }
+const allRecipes = await getCollection(
+  "recipes",
+  (data) => data.draft !== true
+);
+const chosenRecipe = allRecipes.find((item) => item.slug === recipe.recipe);
 ---
 
 <Layout title="Рецепт">
   <main>
-    
-   {chosenRecipe && <RecipeDetails recipe={chosenRecipe} />}
-   {!chosenRecipe && <p class="text-teal-200">something went wrong</p>}
+    {chosenRecipe && <RecipeDetails recipe={chosenRecipe} />}
+    {!chosenRecipe && <p class="text-teal-200">something went wrong</p>}
   </main>
 </Layout>

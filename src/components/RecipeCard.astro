@@ -1,0 +1,27 @@
+---
+const { recipe } = Astro.props;
+const { title, description, imageSrc } = recipe.data;
+console.log(recipe.slug);
+---
+
+<div
+  class="border-2 border-yellow-400 rounded w-80 px-5 pb-6 pt-16 relative h-[340px]"
+>
+  <h2
+    class="text-yellow-400 text-right font-semibold text-xl mb-2 hover:text-yellow-500 hover:rotate-1"
+  >
+    <a href=`/recipes/${recipe.slug}`>{title}</a>
+  </h2>
+  <img
+    class="block w-56 h-48 absolute top-[-8rem] left-0"
+    src={imageSrc}
+    alt={title}
+  />
+  <p class="text-slate-400">{description}</p>
+  <div class="text-right py-2">
+    <a
+      class="text-yellow-400 hover:text-yellow-500 hover:rotate-1 absolute bottom-5 right-6"
+      href=`/recipes/${recipe.slug}`>Детальніше...</a
+    >
+  </div>
+</div>
