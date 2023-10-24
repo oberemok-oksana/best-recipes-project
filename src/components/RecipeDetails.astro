@@ -1,0 +1,61 @@
+---
+import {getCollection} from 'astro:content';
+
+const {recipe} = Astro.props;
+const {title,description,steps,ingredients,imageSrc,category,videoId} = recipe.data;
+
+
+---
+
+<div>
+  <a
+    class="w-40 block text-yellow-400 hover:text-yellow-600"
+    href=`/category/${category.value}`>#{category.label}</a
+  >
+</div>
+<div>
+  <div class="flex justify-end">
+    <a
+      href="/"
+      class="text-[#ffc300] font-semibold underline hover:text-[#ffc400d4]"
+      >Назад</a
+    >
+  </div>
+  <div class="grid grid-cols-2 items-start pt-7">
+    <div class="p-5">
+      <h2 class="text-2xl font-semibold py-3 text-[#ffc300]">
+        {title}
+      </h2>
+      <p class="text-slate-300">
+        {description}
+      </p>
+    </div>
+    <div class="flex justify-center items-center">
+      <img class="w-[300px] h-80 block" src={imageSrc} alt={title} />
+    </div>
+  </div>
+  <div class="grid grid-cols-2 gap-5 mt-8">
+    <div class="p-5">
+      <h3 class="text-xl font-semibold py-3 text-[#ffc300]">Приготування:</h3>
+      <ol class="list-decimal">
+        {steps.map((step: string) => <li class="text-slate-300">{step}</li>)}
+      </ol>
+    </div>
+    <div class="p-5">
+      <h3 class="text-xl font-semibold py-3 text-[#ffc300]">Інгредієнти</h3>
+      <ol class="list-decimal">
+        {ingredients.map((ingredient: string) => <li class="text-slate-300">{ingredient}</li>)}
+      </ol>
+    </div>
+  </div>
+  <div class="flex justify-center pt-5 pb-10">
+    <iframe
+      width="560"
+      height="315"
+      src=`https://www.youtube.com/embed/${videoId}`
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import RecipeDetails from "../../components/RecipeDetails.astro";
+import { getCollection } from "astro:content";
+
+export const getStaticPaths = async () => {
+  const allRecipes = await getCollection(
+    "recipes",
+    (data) => data.draft !== true
+  );
+
+  return allRecipes.map((item) => ({ params: { recipe: item.slug } }));
+};
+
+const recipe = Astro.params;
+ const allRecipes = await getCollection(
+    "recipes",
+    (data) => data.draft !== true
+  );
+const chosenRecipe =  allRecipes.find((item)=>{
+  console.log(item.slug)//coconut-chicken
+// deruny
+// pelmeni
+// pyrizhky
+// sweet-sour-chicken
+// tom-yam
+ return item.slug === recipe.recipe});
+console.log(chosenRecipe)//{ recipe: 'tom-yam' }
+---
+
+<Layout title="Рецепт">
+  <main>
+    
+   {chosenRecipe && <RecipeDetails recipe={chosenRecipe} />}
+   {!chosenRecipe && <p class="text-teal-200">something went wrong</p>}
+  </main>
+</Layout>
