@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/Layout.astro
 title: Деруни
-imageSrc: ../../../public/images/potato.png
+imageSrc: /images/potato.png
 description: Деруни мають ніжний смак та аромат, а їх текстура є хрусткою ззовні і м'якою всередині. Їх можна подавати як окрему страву або супроводжувати сметаною.
 
 steps:

@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/Layout.astro
 title: Кисло-солодка курка
-imageSrc: ../../../public/images/chicken1.png
+imageSrc: /images/chicken1.png
 description: Якщо ви шукаєте яскравий рецепт з азійським спецією, ця страва точно вас вразить. Готувати легко та швидко!
 
 steps:

@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/Layout.astro
 title: Курка в кокосовому молоці
-imageSrc: ../../../public/images/plate.png
+imageSrc: /images/plate.png
 description:
   Цей чудовий смак ніжної курчати та підсмаженої до скоринки,яка увібрала в
   себе найкраще. Найкращим

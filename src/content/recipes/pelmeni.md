@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/Layout.astro
 title: Пельмені
-imageSrc: ../../../public/images/pelmeni.png
+imageSrc: /images/pelmeni.png
 description: Пельмені - це справжня класика кулінарії, що завжди викликає радість і смакові відчуття. Найкращі пельмені - ті, що готуються з любов'ю та дбайливо вибраними інгредієнтами.
 
 steps:
