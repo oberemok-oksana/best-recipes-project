@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import RecipeCard from "../../components/RecipeCard.astro";
+
+export const getStaticPaths = async () => {
+  const allRecipes = await getCollection(
+    "recipes",
+    (recipe) => recipe.data.draft !== true
+  );
+
+  return allRecipes.map((item) => ({
+    params: { category: item.data.category.value },
+  }));
+};
+const allRecipes = await getCollection(
+  "recipes",
+  (recipe) => recipe.data.draft !== true
+);
+
+const category = Astro.params;
+console.log(category);
+const filteredByCategoryRecipes = allRecipes.filter((item) => {
+  item.data.category.value === category.value;
+});
+console.log(JSON.stringify(filteredByCategoryRecipes, null, 2));
+---
+
+<Layout title="Рецепти за категорією">
+  <main>
+    <ul class="mt-24 flex justify-around gap-4 flex-wrap">
+      {
+        filteredByCategoryRecipes.map((item) => (
+          <li class="mb-28">
+            <RecipeCard recipe={item} />
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</Layout>

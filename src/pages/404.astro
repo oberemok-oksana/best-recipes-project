@@ -1,0 +1,36 @@
+---
+import Icon from "astro-icon";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Page Not Found</title>
+  </head>
+  <body class="bg-lime-950 w-full bg-cover text-slate-300">
+    <div>
+      <div class="w-[960px] mx-auto text-center mt-12">
+        <h1 class="text-xl p-2 text-yellow-500">Йой, щось дивне!</h1>
+        <p class="mb-4">Мабуть ми щось змінили…</p>
+        <div class="flex gap-3 justify-center">
+          <Icon
+            name="dashicons:admin-home"
+            width="24"
+            height="24"
+            fill="#FACC14"
+          />
+          <a
+            href="/"
+            class="font-semibold text-yellow-500 hover:text-yellow-200"
+            >Повернутись на головну</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

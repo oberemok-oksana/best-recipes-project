@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import { getAllCategories } from "../utils/lib";
+
+const allRecipes = await getCollection(
+  "recipes",
+  (recipe) => recipe.data.draft !== true
+);
+
+const categories = getAllCategories(allRecipes);
+---
+
+<aside class="absolute left-5">
+  <h2 class="text-yellow-500 font-semibold text-xl mb-2">Категорії:</h2>
+  <ul class="flex flex-col gap-2">
+    {
+      categories.map((category) => (
+        <li>
+          <a
+            class="text-yellow-400 hover:text-yellow-500"
+            href={`/category/${category.value}`}
+          >
+            #{category.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</aside>

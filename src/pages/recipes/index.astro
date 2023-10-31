@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import RecipeCard from "../../components/RecipeCard.astro";
+
+const allRecipes = await getCollection(
+  "recipes",
+  (recipe) => recipe.data.draft !== true
+);
+
+const sortedByDateRecipes = allRecipes.sort(
+  (recipe1, recipe2) =>
+    recipe2.data.date.getTime() - recipe1.data.date.getTime()
+);
+---
+
+<Layout title="Усі рецепти">
+  <main>
+    <ul class="mt-24 flex justify-around gap-4 flex-wrap">
+      {
+        sortedByDateRecipes.map((item) => (
+          <li class="mb-28">
+            <RecipeCard recipe={item} />
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</Layout>
