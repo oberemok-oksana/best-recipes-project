@@ -1,0 +1,31 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const allRecipes = await getCollection(
+  "recipes",
+  (data) => data.data.draft !== true
+);
+const randomIndex = Math.floor(Math.random() * allRecipes.length);
+const randomRecipe = allRecipes[randomIndex];
+
+---
+
+<Layout title="Випадковий рецепт">
+  <main class="grid grid-cols-2 gap-3 my-3">
+    <div>
+      <img src="/images/random.jpg" alt="random dish" />
+    </div>
+    <div class="flex flex-col gap-3">
+      <h1 class="text-slate-300 text-xl">
+        Якщо не знаєте, що сьогодні приготувати, ми допоможемо з цим!
+      </h1>
+      <p class="text-slate-300 text-lg">
+        Для вибору випадкової страви натисніть <a
+          class="italic font-semibold text-yellow-300 hover:text-yellow-500"
+          href=`/recipes/${randomRecipe.slug}`>сюди</a
+        >
+      </p>
+    </div>
+  </main>
+</Layout>
