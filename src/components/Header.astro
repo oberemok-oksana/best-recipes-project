@@ -11,19 +11,22 @@ const allRecipes = await getCollection(
   <ul class="flex items-center gap-6">
     <li>
       <a
-        class="text-3xl font-semibold text-yellow-400 hover:text-yellow-500"
+        class="text-3xl font-semibold text-yellow-400 hover:text-yellow-500" 
+        data-navLink
         href="/">Головна</a
       >
     </li>
     <li>
       <a
-        class="text-3xl font-semibold text-yellow-400 hover:text-yellow-500"
+        class="text-3xl font-semibold text-yellow-400 hover:text-yellow-500" 
+        data-navLink
         href="/recipes">Рецепти</a
       >
     </li>
     <li>
       <a
-        class="text-3xl font-semibold text-yellow-400 hover:text-yellow-500"
+        class="text-3xl font-semibold text-yellow-400 hover:text-yellow-500" 
+        data-navLink
         href="/random">Рандом</a
       >
     </li>
@@ -32,3 +35,5 @@ const allRecipes = await getCollection(
     <Search client:load searchList={allRecipes} />
   </div>
 </header>
+
+<script src="../utils/navLink.ts"></script>
