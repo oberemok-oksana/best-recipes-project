@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/RecipeLayout.astro
+layout: ../../layouts/Layout.astro
 title: Пиріжки з картоплею
 imageSrc: ../../../public/images/buns.png
 description: Наші пиріжки з картоплею - це справжня родинна скарбниця смаку та затишку. Легкі та пухкі пиріжечки, що обгортають ароматну картопляну начинку, роблять цю страву ідеальним вибором.

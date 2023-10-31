@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/RecipeLayout.astro
+layout: ../../layouts/Layout.astro
 title: Курка в кокосовому молоці
 imageSrc: ../../../public/images/plate.png
 description:
