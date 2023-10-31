@@ -1,5 +1,10 @@
 ---
-
+import { getCollection } from "astro:content";
+import Search from "./Search";
+const allRecipes = await getCollection(
+  "recipes",
+  (data) => data.data.draft !== true
+);
 ---
 
 <header class="py-6 flex justify-between items-center">
@@ -24,10 +29,6 @@
     </li>
   </ul>
   <div>
-    <input
-      class="py-2 rounded bg-black border-2 border-gray-400 text-slate-200 pl-2"
-      type="text"
-      placeholder="Пошук..."
-    />
+    <Search client:load searchList={allRecipes} />
   </div>
 </header>

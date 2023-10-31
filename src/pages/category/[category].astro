@@ -19,16 +19,17 @@ const allRecipes = await getCollection(
 );
 
 const category = Astro.params;
-console.log(category);
 const filteredByCategoryRecipes = allRecipes.filter((item) => {
-  item.data.category.value === category.value;
+  return item.data.category.value === category.category;
 });
-console.log(JSON.stringify(filteredByCategoryRecipes, null, 2));
 ---
 
 <Layout title="Рецепти за категорією">
   <main>
-    <ul class="mt-24 flex justify-around gap-4 flex-wrap">
+    <h1 class="text-yellow-400">
+      Рецепти за категорією: <span class="italic">{category.category}</span>
+    </h1>
+    <ul class="mt-32 flex justify-around gap-4 flex-wrap">
       {
         filteredByCategoryRecipes.map((item) => (
           <li class="mb-28">
